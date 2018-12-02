@@ -32,7 +32,7 @@ foreach ($updates as $update) {
 			break;
 
 		default:
-			# code...
+			
 			break;
 	}
 	
