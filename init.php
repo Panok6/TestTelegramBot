@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include("vendor/autoload.php");
 
 include("botConfig.php");
@@ -10,10 +10,7 @@ while (true) {
     print_r($updates);
 foreach ($updates as $update) {
 	$name=$update->message->from->first_name;
-	if($update->message->from->id===403123191){
-      if($update->message->text==="Куда можно пойти в эту субботу?"){
-       $telegramApi->sendMessage($update->message->chat->id,"Доброго времени суток,Юля.Красивый парень Паша,приглашает вас пойти покататься на коньках в эту субботу!");
-	}
+	
     }
 	// if($update->message->from->id===403123191){
  //      if($update->message->text==="Куда можно пойти в эту субботу?"){

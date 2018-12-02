@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 use GuzzleHttp\Client as Client;
 class TelegramBot{
 	protected $token="756160133:AAGMFG3-hOnAMwBhuDLmIhb0YL1AOmN4qI4";
