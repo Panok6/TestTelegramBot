@@ -2,6 +2,8 @@
 include("vendor/autoload.php");
 
 include("botConfig.php");
+
+include("Functions.php");
 $telegramApi = new TelegramBot();
 while (true) {
 	sleep(2);
@@ -22,6 +24,11 @@ foreach ($updates as $update) {
 
 		case 'Как дела?':
 			$telegramApi->sendMessage($update->message->chat->id,"Нормально, а у вас?");
+			break;
+
+        case 'Цены':
+            $price=getPriceFromBd();
+			$telegramApi->sendMessage($update->message->chat->id,$price);
 			break;
 
 		default:

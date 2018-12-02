@@ -25,8 +25,9 @@ class TelegramBot{
 	}
 	public function sendMessage($chat_id,$text){
        $response=$this->apiQuery("sendMessage",[
-       "text" => $text,
-       "chat_id" => $chat_id
+       "chat_id" => $chat_id,
+       "parse_mode" => "html",
+       "text" => $text
        ]);
        return $response;
 	}
