@@ -1,7 +1,8 @@
-<?php
+﻿<?php
 use GuzzleHttp\Client as Client;
 class TelegramBot{
 	protected $token="756160133:AAGMFG3-hOnAMwBhuDLmIhb0YL1AOmN4qI4";
+	protected $updateId;
 	protected function apiQuery($method,$params=[]){
         $url="https://api.telegram.org/bot";
         $url.=$this->token;
@@ -14,11 +15,20 @@ class TelegramBot{
         return json_decode($result->getBody());
 	}
 	public function getUpdates(){
-       $response=$this->apiQuery("getUpdates");
+       $response=$this->apiQuery("getUpdates",[
+       "offset"=>$this->updateId+1
+       ]);
+       if(!empty($response->result)){
+       	$this->updateId=$response->result[count($response->result)-1]->update_id;
+       }
        return $response->result;
 	}
-	public function sendMessage(){
-
+	public function sendMessage($chat_id,$text){
+       $response=$this->apiQuery("sendMessage",[
+       "text" => $text,
+       "chat_id" => $chat_id
+       ]);
+       return $response;
 	}
 }
 ?>
